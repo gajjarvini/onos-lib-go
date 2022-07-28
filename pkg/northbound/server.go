@@ -138,11 +138,11 @@ func (s *Server) Serve(started func(string)) error {
 		log.Info("Authentication Enabled")
 		opts = append(opts, grpc.UnaryInterceptor(
 			grpc_middleware.ChainUnaryServer(
-				grpc_auth.UnaryServerInterceptor(auth.AuthenticationInterceptor),
+				grpc_auth.UnaryServerInterceptor(auth.AuthenticationInterceptorSAML),
 			)))
 		opts = append(opts, grpc.StreamInterceptor(
 			grpc_middleware.ChainStreamServer(
-				grpc_auth.StreamServerInterceptor(auth.AuthenticationInterceptor))))
+				grpc_auth.StreamServerInterceptor(auth.AuthenticationInterceptorSAML))))
 
 	}
 
